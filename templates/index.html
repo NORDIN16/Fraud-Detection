@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <header> Détection de fraudes dans les transactions financières</header>
+
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="form first">
+        <div class="details personal">
+          <div class="fields">
+
+            <div class="input-field">
+              <label>amount</label>
+              <input type="number" step="0.01" placeholder="amount" name="amount" required>
+            </div>
+            
+            <div class="input-field">
+              <label>type</label>
+              <select name="type" required>
+                <option value=1>CASH_OUT</option>
+                <option value=2>PAYMENT</option>
+                <option value=3>CASH_IN</option>
+                <option value=0>TRANSFER</option>
+                <option value=4>DEBIT</option>
+              </select>
+            </div>
+            
+
+            <div class="input-field">
+              <label>step</label>
+              <input type="number"  placeholder="step" name="step" required>
+            </div>
+            
+           <div class="input-field">
+              <label>old_balance_orig</label>
+              <input type="number" step="0.01" placeholder="old_balance_orig" name="old_balance_orig" required >
+            </div>
+
+            <div class="input-field">
+              <label>old_balance_Dest</label>
+              <input type="number" step="0.01" placeholder="old_balance_Dest" name="old_balance_Dest" required>
+            </div>
+            
+           <div class="input-field">
+              <label>new_balance_Dest</label>
+              <input type="number" step="0.01" placeholder="new_balance_Dest" name="new_balance_Dest" required >
+            </div>
+
+            <div class="input-field">
+              <label>new_balance_Orig</label>
+              <input type="number" step="0.01" placeholder="new_balance_Orig" name="new_balance_Orig" required>
+            </div>
+            
+            
+
+            <button type="submit"  class="btn btn-primary btn-block btn-large">Predict</button>
+          </div>
+        </div>
+      </div>
+      <div class="prediction">
+        <h2> {{ prediction_text }} </h2>
+    </div>
+     <footer>&copy; Noureddine Arab</footer>
+</body>
+
+</html>
